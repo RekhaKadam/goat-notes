@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import AppSidebar from "@/components/AppSidebar";
+import NoteProvider from "@/providers/NoteProvider";
 import Header from "@/components/header";
 
 
-
 export const metadata: Metadata = {
-  title: "GOAT Notes",
+  title: "Create Next App",
 };
 
 export default function RootLayout({
@@ -18,19 +20,27 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-         <ThemeProvider
+        <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            <div>
-            <Header/>
-            <main className="flex w-full max-w-2xl flex-1 flex-col items-center justify-center px-4 py-8">
-            {children}
+            <NoteProvider>
+          <SidebarProvider>
+            <AppSidebar/>
+            <div className="flex min-h-screen w-full flex-col">
+            <Header />
+            <main className="flex flex-1 flex-col px-4 pt-10 xl:px-8">
+              {children}
             </main>
-          </div>
+             
+             </div>
+                 </SidebarProvider>
+
+           
             <Toaster />
+            </NoteProvider>
           </ThemeProvider>
       </body>
     </html>
