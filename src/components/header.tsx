@@ -6,7 +6,6 @@ import { shadow } from '@/styles/utils';
 import { Button } from './ui/button';
 import  DarkModeToggle  from './DarkModeToggle';
 import LogOutButton from './LogoutButton';
-import { error } from 'console';
 import { getUser } from '@/auth/server';
 async function Header() {
     const user=await getUser();;
