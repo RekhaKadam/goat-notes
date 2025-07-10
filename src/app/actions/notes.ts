@@ -4,8 +4,8 @@ import { getUser } from "@/auth/server";
 import { prisma } from "@/db/prisma";
 import { handleError } from "@/lib/utils";
 import openai from "@/openai";
-import { Note } from "@prisma/client";
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { Prisma } from "@prisma/client"; // ✅ Added for type inference
 
 export const createNoteAction = async (noteId: string) => {
   try {
@@ -75,7 +75,7 @@ export const askAIAboutNotesAction = async (
   }
 
   const formattedNotes = notes
-    .map((note: Pick<Note, "text" | "createdAt" | "updatedAt">) =>
+    .map((note: Prisma.NoteGetPayload<{ select: { text: true; createdAt: true; updatedAt: true } }>) =>
       `
       Text: ${note.text}
       Created at: ${note.createdAt}
