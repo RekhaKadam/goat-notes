@@ -25,7 +25,7 @@ function AuthForm({ type }: Props) {
       const email = formData.get('email') as string;
       const password = formData.get('password') as string; // ✅ fixed
 
-      let errorMessage: string | null = null;
+      const errorMessage: string | null = null;
       let title = '';
       let description = '';
 
