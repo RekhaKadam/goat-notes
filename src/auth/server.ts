@@ -18,9 +18,7 @@ export async function createClient() {
               cookieStore.set(name, value, options)
             )
           } catch {
-            // The `setAll` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
+            
           }
         },
       },
@@ -29,16 +27,15 @@ export async function createClient() {
   return client;
 }
 
-
-export async function getUser() {
+export async function getUser(){
     const {auth} = await createClient();
-    const userObject=await auth.getUser();
 
-    if((userObject).error){
-        console.error((userObject).error);
-        return null
+    const userObject= await auth.getUser();
+
+    if (userObject.error) {
+        console.error(userObject.error);
+        return null;
     }
-    return (userObject).data.user;
+
+    return userObject.data.user;
 }
-
-

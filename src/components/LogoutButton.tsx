@@ -6,7 +6,6 @@ import { toast } from 'sonner';
 import { useRouter } from "next/navigation";
 import { logOutAction } from '@/app/actions/users';
 
-
 function LogOutButton() {
     const router= useRouter();
     const [loading, setLoading] = useState(false);
@@ -14,21 +13,17 @@ function LogOutButton() {
     const handleLogOut = async() =>{
         setLoading(true)
         
-        
-const errorMessage = await logOutAction();
+const result = await logOutAction();
 
-
-       
-
-        if (!errorMessage) {
+if (!result || result.errorMessage) {
+  toast.error("Logout Failed", {
+    description: result?.errorMessage || "Something went wrong.",
+  });
+} else {
   toast.success("Logout Success", {
     description: "You have been successfully logged out.",
-  },
-);
-  router.push("/");
-} else {
-  toast.error("Logout Failed", {
   });
+  router.push("/");
 }
 
         setLoading(false);
