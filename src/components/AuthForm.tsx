@@ -31,12 +31,10 @@ function AuthForm({ type }: Props) {
 
       if (isLoginForm) {
         const res = await loginAction(email, password);
-        errorMessage = res.errorMessage;
         title = 'Logged in';
         description = 'You have successfully logged in.';
       } else {
         const res = await signUpAction(email, password);
-        errorMessage = res.errorMessage;
         title = 'Signed Up';
         description = 'Check your email for the confirmation link.';
       }

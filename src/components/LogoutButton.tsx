@@ -14,7 +14,8 @@ function LogOutButton() {
     const handleLogOut = async() =>{
         setLoading(true)
         
-const {errorMessage }= await logOutAction();
+        
+const errorMessage = await logOutAction();
 
 
        
@@ -27,7 +28,6 @@ const {errorMessage }= await logOutAction();
   router.push("/");
 } else {
   toast.error("Logout Failed", {
-    description: errorMessage || "Something went wrong.",
   });
 }
 
