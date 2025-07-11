@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {v4 as uuidv4} from "uuid";
 import { toast } from "sonner";
-import { createNoteAction } from "@/app/actions/notes";
+import { createNoteAction } from "@/actions/notes";
 import { debounceTimeout } from "@/lib/constants";
 
 type Props = {

@@ -10,8 +10,8 @@ import { SearchIcon } from "lucide-react";
 import { Input } from "./ui/input";
 import { useEffect, useMemo, useState } from "react";
 import Fuse from "fuse.js";
-import DeleteNoteButton from "./DeleteNoteButton";
 import SelectNoteButton from "./SelectNoteButton";
+import DeleteNoteButton from "./DeleteNoteButton";
 
 type Props = {
   notes: Note[];

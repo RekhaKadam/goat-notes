@@ -4,7 +4,7 @@ import { Button } from './ui/button'
 import { Loader2 } from 'lucide-react'
 import { toast } from 'sonner';
 import { useRouter } from "next/navigation";
-import { logOutAction } from '@/app/actions/users';
+import { logOutAction } from '@/actions/users';
 
 function LogOutButton() {
     const router= useRouter();
